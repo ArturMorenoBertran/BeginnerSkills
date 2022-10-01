@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+
+.split-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #333;
+}
+
+/* ------------------------- Right Menu ------------------------- */
+
+.grid-container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-auto-columns: 10em; 
+  gap: 20px;
+  padding: 5%;
+  grid-auto-flow: dense;
+}
+
+.grid-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 5px 5px 8px 5px #888888;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.grid-item .layer {
+  z-index: -1;
+  font-size: 50px;
+  font-weight: 900;
+}
+
+.layer:hover {
+  visibility: visible;
+}
+
+.grid-item:hover {
+  filter: opacity(0.9);
+  transform: scale(1.04);
+}
+
+.split-right {
+  position: absolute;
+  width: 14%;
+  height: 100%;  
+  overflow: hidden;
+  right: 0;
+}
+
+.split-right::before {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(43, 43, 43);
+}
+
+/* ------------------------- Left Menu ------------------------- */
+
+.split-left {
+  position: absolute;
+  width: 25%;
+  height: 100%;  
+  overflow: hidden;
+  left: 0;
+}
+
+.split-left::before {
+  position: absolute;
+  width: 100%;
+  height: 100%;  
+}
+
+.split-left .board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+/* ------------------------- Center Menu ------------------------- */
+
+.split-center {
+  position: absolute;
+  width: 60%;
+  height: 100%;  
+  overflow: hidden;
+  left: 25%;  
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
+  grid-auto-rows: 12em;
+  gap: 3em;
+  padding: 20px;
+  grid-auto-flow: dense;  
+}
+
+.split-center::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.grid-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+
+.tall {
+  grid-column: span 2;
+  grid-row: span 3;
+}
+
+.wide {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+
+/* ------------------------- JavaScript changes ------------------------- */
+
+.split-right,
+.split-left,
+.split-center,
+.split-right::before,
+.split-left::before,
+.split-center::before {
+
+  transition: all 1000ms ease-in-out;
+}
+
+.hover-center .split-left {
+  width: 15%;  
+}
+
+.hover-center .split-center {
+  left: 15%;
+  width: 70%;
+}
+
+.hover-left .split-left {
+  width: 25%;
+  background: #333;
+  z-index: 10;
+}
+
+.hover-left .split-center{
+  left: 25%;
+  width: 60%;
+}
+
+.hover-right .split-right {
+  width: 50%;  
+  background-color:  rgba(43, 43, 43) ;
+  z-index: 100;
+}
+.hover-right .split-right .grid-container {
+  grid-template: 50% 50% / 20% 20% 20%;
+  grid-gap: 5em;
+}
+
+.hover-right .split-right .grid-container .grid-item {
+  width: 170%;
+  height: 80%;
+}
+
+@media (max-width: 800px) {
+  
+
+  .grid-container {
+    grid-template: repeat(auto-fill);
+    grid-gap: 1em;  
+  }
+
+  .grid-item {
+    
+    width: 40%;
+    height: 40%;    
+  }
+  
+  .split-left {
+    width: 10%;
+  }
+  .split-center {
+    width: 60%;
+    left: 10%;
+  }
+
+  .hover-right {
+    pointer-events: none;
+  }
+
+  .layer:hover {
+    visibility: hidden;
+  }
+
+  .split-center {
+    gap: .5em;
+  }
+
+  .tall {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+
+  .wide {
+    grid-row: span 2;
+    grid-column: span 1;
+  }
+   
+}

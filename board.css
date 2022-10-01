@@ -1,0 +1,19 @@
+ /* ------------------------- Board ------------------------- */
+
+ .board {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+  }
+  
+  .square {    
+    background-color: #1d1d1d;
+    height: 2em;
+    width: 2em;
+    margin: 2px;
+    z-index: 10;
+  }
